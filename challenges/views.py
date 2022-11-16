@@ -4,12 +4,8 @@ from django.http import HttpResponse, HttpResponseNotFound
 # Create your views here.
 
 
-def january(request):
-    return HttpResponse("This works!")
-
-
-def february(request):
-    return HttpResponse("This is february!")
+def monthly_challenge_by_number(request, month):
+    return HttpResponse(month)
 
 
 def monthly_challenge(request, month):
