@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
 from django.urls import reverse
+from django.template.loader import render_to_string
 
 monthly_challenges = {
     "january": "Eat no meat for the entire month!",
@@ -49,7 +50,9 @@ def monthly_challenge(request, month):
     # the month input is here because of the place holder set on urls.py with the exact same name
     try:
         challenge_text = monthly_challenges[month]
-        response_data = f"<h1>{challenge_text}</h1>"
+        #it is a good practice to create a folder inside templates folder
+        #  with the name of your app so you don't eventually come with same file names, which would cause conflict. 
+        response_data = render_to_string("challenges/challenge.html")
         return HttpResponse(response_data)
     except:
         return HttpResponseNotFound("<h1>This month is not supported!</h1>")
