@@ -52,6 +52,11 @@ def monthly_challenge(request, month):
         #it is a good practice to create a folder inside templates folder
         #  with the name of your app so you don't eventually come with same file names, which would cause conflict. 
         # since returning a template is frequent, django has the render function which renders the template to string and sends it through a http response.
-        return render(request, "challenges/challenge.html")
+        # render and render to string have a third input that is a dictionary containing key-value pairs to be interpolated into the template
+        return render(request, "challenges/challenge.html", {
+            "text": challenge_text,
+            "month": month.capitalize()
+
+        })
     except:
         return HttpResponseNotFound("<h1>This month is not supported!</h1>")
