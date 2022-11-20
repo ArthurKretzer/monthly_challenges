@@ -59,6 +59,7 @@ TEMPLATES = [
         'DIRS': [
             #you can reference the folder here, but registering the app is better
             # BASE_DIR / "challenges" / "templates"
+            BASE_DIR / "templates"
         ],
         #this enables app dir searching
         'APP_DIRS': True,
